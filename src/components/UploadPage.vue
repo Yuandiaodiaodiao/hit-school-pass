@@ -137,7 +137,7 @@
     }
 
     #box2 {
-        height: min(50vh, 400px);
+        height: 400px;
         overflow: hidden;
     }
 
