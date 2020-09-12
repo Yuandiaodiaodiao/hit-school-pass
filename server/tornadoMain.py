@@ -1,5 +1,6 @@
 import tornado.web
 import tornado.ioloop
+import tornado.httpserver
 import os
 path=os.path.join("dist",'static')
 htmlpath=os.path.join("dist",'index.html')
@@ -15,5 +16,7 @@ if __name__ == "__main__":
     application = tornado.web.Application([
         (r"/", MainHandler),
     ],**setting)
-    application.listen(10277)
+    http_server=tornado.httpserver.HTTPServer(application,xheaders=True)
+    http_server.bind(int(10277),"0.0.0.0")
+    http_server.start(1)
     tornado.ioloop.IOLoop.current().start()
