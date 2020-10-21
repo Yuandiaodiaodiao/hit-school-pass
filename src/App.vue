@@ -1,8 +1,8 @@
 <template>
     <div id="app">
 
-        <UploadPage v-if="loginEd" v-bind:userInfo="userInfo"></UploadPage>
-        <LoginPage v-else v-on:login="login"></LoginPage>
+        <UploadPage v-show="loginEd" v-bind:userInfo="userInfo" v-on:logout="logout"></UploadPage>
+        <LoginPage v-show="!loginEd" v-on:login="login"></LoginPage>
     </div>
 </template>
 
@@ -26,6 +26,9 @@
             login(e){
                 this.userInfo=e
                 this.loginEd=true
+            },
+            logout(){
+                this.loginEd=false
             }
         }
     }
